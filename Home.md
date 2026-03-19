@@ -1,3 +1,3 @@
-# Добро пожаловать в документацию Bitzal
+# Welcome to the Bitzal documentation
 
-Здесь будет описание проекта.
+The project description will be here.
