@@ -1,3 +1,17 @@
+<h1 align="center"> 
+<br/><br/>
+<img src="https://github.com/bitzalpay/bitzal/blob/main/src/qt/res/icons/small.png" alt="Bitzal" width="300"/>
+</h1>
+
+<div align="center">
+<h1 align="center">
+
+Bitzal Core
+===========
+
+<div align="center">
+
+
 ## The Basics
 
 - [Bitzal Whitepaper](whitepaper.md)  
