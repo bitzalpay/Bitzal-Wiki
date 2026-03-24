@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhitePaper - Bitzal Core</title>
+    <style>
+        :root {
+            --primary: #ff7a00;
+            --primary-dark: #e56c00;
+            --primary-light: #ff9a33;
+            --text-dark: #1a1a1a;
+            --text-light: #4a4a4a;
+            --bg-light: #fafafa;
+            --border: #e5e5e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            padding: 2rem;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary);
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .version {
+            text-align: center;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 1.8rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .highlight-box {
+            background: #fff8f0;
+            border-left: 4px solid var(--primary);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+
+        .highlight-box strong {
+            color: var(--primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            border: 1px solid var(--border);
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        tr:hover {
+            background: #fef9f0;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 1.8rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+            color: var(--text-light);
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: #f9f9f9;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border-top: 3px solid var(--primary);
+        }
+
+        .card h4 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        hr {
+            margin: 2rem 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="logo">
+        <img src="https://github.com/bitzalpay/Bitzal-Wiki/blob/master/assets/small.png?raw=true" alt="Bitzal" width="280"/>
+    </div>
+
+    <h1>Bitzal Core WhitePaper</h1>
+    <div class="subtitle">A Self-Funding, Scalable, and Privacy-Oriented Digital Currency Platform</div>
+    <div class="version">Version 1.0 — March 2026</div>
+
+    <!-- Abstract -->
+    <h2>📖 Abstract</h2>
+    <p>Bitzal Core is a next-generation decentralized digital currency platform designed for mass adoption. Combining the proven stability of X11 and MinotaurX mining algorithms with a robust masternode network, Bitzal delivers instant transactions, enhanced privacy, and a sustainable treasury system. Inspired by the architectural principles of Dash but engineered with unique innovations, Bitzal introduces a multi-phase emission schedule, dynamic block rewards, and a governance model that ensures long-term viability. With a total supply of 84 million ZAL and a fair launch philosophy, Bitzal empowers users, miners, and masternode operators to collectively shape the future of digital payments.</p>
+
+    <!-- Introduction -->
+    <h2>1. Introduction</h2>
+    <p>The cryptocurrency landscape has evolved dramatically since the launch of Bitcoin. While Bitcoin established the foundation for decentralized digital money, it faces challenges in scalability, governance, and user experience. Bitzal Core addresses these limitations by implementing a two-tier network architecture, instant transaction finality, and a decentralized governance system funded by the blockchain itself.</p>
+    <p>Bitzal is built on the principles of <strong>accessibility</strong>, <strong>privacy</strong>, and <strong>sustainability</strong>. Our mission is to create a digital currency that can be used by anyone, anywhere, for everyday transactions while maintaining the security and decentralization that define cryptocurrency.</p>
+
+    <div class="highlight-box">
+        <strong>Key Innovations:</strong><br>
+        • Two-Tier Network: Miners secure the blockchain, masternodes enable advanced features<br>
+        • InstantSend: Near-instant transaction confirmation<br>
+        • PrivateSend: Optional anonymity through coin mixing<br>
+        • Decentralized Treasury: 10% of block rewards fund development and ecosystem growth<br>
+        • Dual-Algorithm Mining: X11 + MinotaurX for ASIC resistance and fair distribution
+    </div>
+
+    <!-- Blockchain Architecture -->
+    <h2>2. Blockchain Architecture</h2>
+    <p>Bitzal utilizes a hybrid Proof-of-Work (PoW) and Masternode network. Miners solve complex cryptographic puzzles to create new blocks, while masternodes provide second-layer services including instant transactions, private transactions, and governance. This two-tier approach allows Bitzal to scale beyond the limitations of single-layer networks.</p>
+
+    <h3>2.1 Proof-of-Work Algorithm</h3>
+    <p>Bitzal implements a dual-algorithm mining system:</p>
+    <ul>
+        <li><strong>X11</strong>: A chained hashing algorithm using 11 scientific hash functions (blake, bmw, groestl, jh, keccak, skein, luffa, cubehash, shavite, simd, echo). X11 provides ASIC resistance and energy efficiency.</li>
+        <li><strong>MinotaurX</strong>: A memory-hard algorithm designed to maintain ASIC resistance over time. MinotaurX ensures fair mining opportunities for CPU and GPU miners while providing smooth difficulty transitions.</li>
+    </ul>
+    <p>The two-phase difficulty system ensures network stability during the initial launch and long-term security. Blocks 1-300 feature extremely low difficulty to bootstrap the network, followed by adaptive Dark Gravity Wave (DGW) difficulty adjustments.</p>
+
+    <h3>2.2 Masternode Network</h3>
+    <p>Masternodes are full nodes that hold 8,000 ZAL as collateral. In return, they provide critical services and receive 45% of each block reward. Masternode responsibilities include:</p>
+    <ul>
+        <li>InstantSend transaction verification</li>
+        <li>PrivateSend coin mixing coordination</li>
+        <li>Governance proposal voting</li>
+        <li>Network consensus participation (DIP3)</li>
+        <li>ZalDrive decentralized storage coordination</li>
+    </ul>
+    <p>Masternodes are incentivized to maintain high uptime and performance, as inactive nodes are automatically removed from the active list.</p>
+
+    <!-- Tokenomics -->
+    <h2>3. Tokenomics & Emission Schedule</h2>
+    <p>Bitzal has a fixed total supply of <strong>84,000,000 ZAL</strong>, with a carefully designed emission schedule spanning approximately 37 years. This long-term emission ensures sustainable miner and masternode incentives while allowing for network growth.</p>
+
+    <h3>3.1 Emission Overview</h3>
+     <table>
+        <thead>
+            <tr><th>Category</th><th>Amount (ZAL)</th><th>Percentage</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Premine (Blocks 1-10)</td><td>8,400,000</td><td>10%</td></tr>
+            <tr><td>Mining (Blocks 11+)</td><td>75,600,000</td><td>90%</td></tr>
+        </tbody>
+    </table>
+
+    <h3>3.2 Block Reward Schedule</h3>
+    <p>The block reward decreases smoothly across five distinct eras, ensuring predictable inflation and long-term economic stability.</p>
+    <table>
+        <thead>
+            <tr><th>Block Range</th><th>Reward (ZAL)</th><th>Duration</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1-10</td><td>840,000 (premine)</td><td>~25 min</td></tr>
+            <tr><td>11-8,000</td><td>50</td><td>~13.5 days</td></tr>
+            <tr><td>8,001-200,000</td><td>50 → 30 (smooth)</td><td>~1 year</td></tr>
+            <tr><td>200,001-600,000</td><td>30 → 20 (smooth)</td><td>~2.3 years</td></tr>
+            <tr><td>600,001-1,500,000</td><td>20 → 12 (smooth)</td><td>~5.2 years</td></tr>
+            <tr><td>1,500,001+</td><td>Halving epochs: 12 → 8 → 4...</td><td>~28 years</td></tr>
+        </tbody>
+    </table>
+
+    <h3>3.3 Reward Distribution</h3>
+    <p>After masternode activation at block 8,000, block rewards are distributed as follows:</p>
+    <ul>
+        <li><strong>45% Masternodes</strong> — Service providers enabling advanced network features</li>
+        <li><strong>45% Miners</strong> — Network security through Proof-of-Work</li>
+        <li><strong>10% Treasury</strong> — Decentralized funding for development, marketing, and ecosystem growth</li>
+    </ul>
+
+    <div class="highlight-box">
+        <strong>Treasury System:</strong> The 10% treasury allocation accumulates in a decentralized fund. Community members can submit governance proposals to request funding for development projects, marketing campaigns, exchange listings, or any initiative that benefits the Bitzal ecosystem. Proposals are voted on by masternode operators.
+    </div>
+
+    <!-- Premine Allocation -->
+    <h2>4. Premine Allocation & Vesting</h2>
+    <p>The premine of 8,400,000 ZAL (10%) is strategically allocated to ensure sustainable development and ecosystem growth. All premine funds are held in multi-signature wallets (3-of-5) and subject to transparent vesting schedules.</p>
+
+    <table>
+        <thead>
+            <tr><th>Allocation</th><th>Amount (ZAL)</th><th>Percentage</th><th>Vesting / Purpose</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Development & Core Team</td><td>3,780,000</td><td>45%</td><td>24-month vesting, 6-month cliff. Rewards for core development, protocol upgrades, security audits</td></tr>
+            <tr><td>Marketing & Community</td><td>2,100,000</td><td>25%</td><td>Exchange listings, community rewards, ambassador program, ecosystem grants</td></tr>
+            <tr><td>Liquidity Provision</td><td>1,260,000</td><td>15%</td><td>Initial liquidity on exchanges, locked minimum 12 months</td></tr>
+            <tr><td>Operations & BD</td><td>840,000</td><td>10%</td><td>Legal compliance, infrastructure, partnerships, operational expenses</td></tr>
+            <tr><td>Legal & Compliance</td><td>420,000</td><td>5%</td><td>Regulatory compliance, legal advisory, licensing</td></tr>
+        </tbody>
+    </table>
+
+    <!-- Advanced Features -->
+    <h2>5. Advanced Features</h2>
+
+    <div class="two-columns">
+        <div class="card">
+            <h4>⚡ InstantSend</h4>
+            <p>Transactions achieve near-instant finality through masternode quorum consensus. Instead of waiting for multiple block confirmations, InstantSend locks inputs using a masternode quorum, enabling secure transactions in seconds.</p>
+        </div>
+        <div class="card">
+            <h4>🔒 PrivateSend</h4>
+            <p>Optional anonymity through a decentralized coin mixing protocol. PrivateSend breaks the link between transaction inputs and outputs using a multi-stage mixing process coordinated by masternodes, ensuring transaction privacy for users who require it.</p>
+        </div>
+        <div class="card">
+            <h4>🏛️ Decentralized Governance</h4>
+            <p>Masternode operators vote on budget proposals, development priorities, and network parameters. Any ZAL holder can submit a proposal, subject to a collateral requirement, ensuring that the community controls the project's direction.</p>
+        </div>
+        <div class="card">
+            <h4>💾 ZalDrive (IPFS Integration)</h4>
+            <p>Decentralized storage for user objects and governance data using IPFS. ZalDrive enables secure, redundant storage of network data without relying on centralized servers, ensuring long-term data availability and censorship resistance.</p>
+        </div>
+    </div>
+
+    <!-- Scalability Roadmap -->
+    <h2>6. Scalability & Future Development</h2>
+    <p>Bitzal's development is structured in three major phases, each bringing significant increases in throughput and functionality:</p>
+
+    <h3>Phase 1 — Foundation (2026)</h3>
+    <ul>
+        <li>Core wallet releases (Linux, Windows)</li>
+        <li>5MB block size activation</li>
+        <li>Masternode activation at block 8,000</li>
+        <li>HD wallet support</li>
+        <li>Documentation portal launch</li>
+    </ul>
+
+    <h3>Phase 2 — Evolution (2026-2027)</h3>
+    <ul>
+        <li>Full anonymity and privacy features (PrivateSend)</li>
+        <li>Enhanced governance system with governance objects</li>
+        <li>User-friendly wallet with improved UI/UX</li>
+        <li>Atomic swaps with Bitcoin, Litecoin, and other major coins</li>
+        <li>Exchange listings and DEX integration</li>
+    </ul>
+
+    <h3>Phase 3 — Scaling & Mass Adoption (2028+)</h3>
+    <ul>
+        <li>ZalDrive decentralized storage with IPFS</li>
+        <li>Specialized masternode hardware for massive parallelization</li>
+        <li>Contract system (smart contracts) on Bitzal</li>
+        <li>Traditional payment system integration (POS terminals, merchant services)</li>
+        <li>Institutional adoption and regulated exchange listings</li>
+    </ul>
+
+    <!-- Security -->
+    <h2>7. Security & Network Protection</h2>
+    <p>Bitzal implements multiple layers of security to protect user funds and network integrity:</p>
+    <ul>
+        <li><strong>Spork Technology</strong>: Multi-signature (3-of-5) feature activation system that allows network upgrades without hard forks, with error protection to prevent accidental damage.</li>
+        <li><strong>Dark Gravity Wave (DGW)</strong>: Adaptive difficulty adjustment algorithm that responds quickly to hash rate fluctuations, ensuring consistent block times.</li>
+        <li><strong>DIP3 Deterministic Masternodes</strong>: Enhanced masternode management system that improves network stability and reduces attack vectors.</li>
+        <li><strong>State Transitions</strong>: Mathematically predictable masternode evaluation system that automatically removes underperforming nodes.</li>
+        <li><strong>Sybil-Proof System</strong>: Each created user can invite only three others, preventing artificial network inflation.</li>
+    </ul>
+
+    <!-- Governance -->
+    <h2>8. Governance Model</h2>
+    <p>Bitzal's governance system is designed to be inclusive, transparent, and efficient. The 10% treasury allocation is controlled by masternode operators through a decentralized voting mechanism.</p>
+    
+    <div class="highlight-box">
+        <strong>How Governance Works:</strong><br>
+        1. Any community member can submit a proposal (requires 5 ZAL fee to prevent spam).<br>
+        2. Masternode operators vote "yes" or "no" on each proposal.<br>
+        3. Approved proposals receive funding from the treasury superblock.<br>
+        4. Superblocks occur monthly, distributing accumulated treasury funds to approved initiatives.<br>
+        5. All proposals, votes, and payments are recorded on-chain for full transparency.
+    </div>
+
+    <p>This governance mechanism ensures that development priorities align with community interests while maintaining operational efficiency. The team's premine allocation is subject to the same governance oversight, with major expenditures requiring community approval.</p>
+
+    <!-- Conclusion -->
+    <h2>9. Conclusion</h2>
+    <p>Bitzal Core represents a significant advancement in digital currency design. By combining the security of Proof-of-Work with the advanced features of a masternode network, Bitzal delivers instant, private, and scalable transactions suitable for everyday use. The sustainable treasury system ensures long-term development funding without reliance on external investors or centralized entities.</p>
+    <p>With a clear roadmap, transparent tokenomics, and a community-driven governance model, Bitzal is positioned to become a leading platform for decentralized digital payments. We invite miners, masternode operators, developers, and users to join us in building the future of finance — a future that is open, accessible, and owned by the people.</p>
+
+    <!-- References -->
+    <h2>10. References & Further Reading</h2>
+    <ul>
+        <li><a href="roadmap.html" style="color: var(--primary);">Bitzal Core Roadmap</a> — Detailed development timeline</li>
+        <li><a href="tokenomics.html" style="color: var(--primary);">Tokenomics Documentation</a> — Complete emission schedule and economic model</li>
+        <li><a href="https://github.com/bitzalpay/bitzal" style="color: var(--primary);">GitHub Repository</a> — Open source codebase</li>
+        <li>Dash WhitePaper — Inspiration for two-tier architecture</li>
+        <li>IPFS Documentation — Decentralized storage foundation for ZalDrive</li>
+    </ul>
+
+    <hr>
+
+    <div class="footer">
+        <strong style="color: var(--primary);">Bitzal Core</strong> — Decentralized. Private. Sustainable.<br>
+        Version 1.0 | March 2026
+    </div>
+
+</div>
+</body>
+</html>
