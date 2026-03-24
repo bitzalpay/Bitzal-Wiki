@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Algorithm Mining - Bitzal Core</title>
+    <style>
+        :root {
+            --primary: #ff7a00;
+            --primary-dark: #e56c00;
+            --primary-light: #ff9a33;
+            --text-dark: #1a1a1a;
+            --text-light: #4a4a4a;
+            --bg-light: #fafafa;
+            --border: #e5e5e5;
+            --code-bg: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            padding: 2rem;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .version {
+            text-align: center;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 1.8rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .highlight-box {
+            background: #fff8f0;
+            border-left: 4px solid var(--primary);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+
+        .highlight-box strong {
+            color: var(--primary);
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            border: 1px solid var(--border);
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        tr:hover {
+            background: #fef9f0;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 1.8rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+            color: var(--text-light);
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: #f9f9f9;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border-top: 3px solid var(--primary);
+        }
+
+        .card h4 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'SF Mono', 'Menlo', 'Monaco', 'Cascadia Code', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin: 1rem 0;
+            border: 1px solid var(--border);
+        }
+
+        code {
+            font-family: 'SF Mono', 'Menlo', 'Monaco', 'Cascadia Code', monospace;
+            background: var(--code-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .diagram {
+            background: #1e1e2e;
+            color: #cdd6f4;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        hr {
+            margin: 2rem 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+            th, td {
+                font-size: 0.8rem;
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="logo">
+        <img src="https://github.com/bitzalpay/Bitzal-Wiki/blob/master/assets/small.png?raw=true" alt="Bitzal" width="280"/>
+    </div>
+
+    <h1>Multi-Algo</h1>
+    <div class="subtitle">Proof-of-Work Algorithms in Bitzal: X11 and MinotaurX</div>
+    <div class="version">Version 1.0 | March 18, 2026</div>
+
+    <!-- Introduction -->
+    <h2>📖 Introduction</h2>
+    <p>Bitzal utilizes a unique dual-algorithm Proof-of-Work system, combining the battle-tested X11 for ASIC miners with the innovative MinotaurX for CPU/GPU mining. This approach creates a balance between network security, mining accessibility for ordinary users, and protection against centralization.</p>
+    <p>Unlike most cryptocurrencies that rely on a single algorithm, Bitzal fosters an ecosystem where every participant can contribute to network security in the most efficient way for their circumstances.</p>
+
+    <hr>
+
+    <!-- Section 1: X11 -->
+    <h2>⚙️ Section 1: X11 — The Proven ASIC Algorithm</h2>
+
+    <h3>1.1 History and Origins</h3>
+    <p>X11 was first introduced in 2014 by the developers of Dash (then Darkcoin) as an innovative algorithm initially positioned as ASIC-resistant. The algorithm consisted of a chain of 11 different hashing functions, which was intended to complicate the creation of specialized hardware.</p>
+    <p>However, by 2016-2017, ASIC manufacturers (Baikal, iBeLink, Pinidea) successfully developed specialized integrated circuits for X11, transitioning the algorithm into the ASIC-dominated category. Despite this, X11 remains one of the most reliable and proven algorithms in the industry, used in dozens of cryptocurrencies.</p>
+
+    <h3>1.2 X11 Technical Specification</h3>
+    <p>X11 sequentially applies 11 cryptographic algorithms, creating a unique hashing "sandwich":</p>
+    <table>
+        <thead><tr><th>#</th><th>Algorithm</th><th>Developer</th><th>Year</th><th>Features</th></tr></thead>
+        <tbody>
+            <tr><td>1</td><td><strong>Blake</strong></td><td>Jean-Philippe Aumasson</td><td>2008</td><td>High speed, SHA-3 candidate</td></tr>
+            <tr><td>2</td><td><strong>BMW</strong></td><td>Danilo Gligoroski</td><td>2008</td><td>Blue Midnight Wish, SHA-3 candidate</td></tr>
+            <tr><td>3</td><td><strong>Groestl</strong></td><td>Prach Lahaja</td><td>2008</td><td>SHA-3 candidate, attack-resistant</td></tr>
+            <tr><td>4</td><td><strong>JH</strong></td><td>Hongjun Wu</td><td>2008</td><td>SHA-3 candidate, simple structure</td></tr>
+            <tr><td>5</td><td><strong>Keccak</strong></td><td>Guido Bertoni</td><td>2008</td><td>SHA-3 competition winner</td></tr>
+            <tr><td>6</td><td><strong>Skein</strong></td><td>Bruce Schneier</td><td>2008</td><td>SHA-3 candidate, high flexibility</td></tr>
+            <tr><td>7</td><td><strong>Luffa</strong></td><td>Dai Watanabe</td><td>2008</td><td>SHA-3 candidate, parallel structure</td></tr>
+            <tr><td>8</td><td><strong>Cubehash</strong></td><td>Daniel Bernstein</td><td>2008</td><td>SHA-3 candidate, simple implementation</td></tr>
+            <tr><td>9</td><td><strong>Shavite</strong></td><td>Valery Osipov</td><td>2008</td><td>SHA-3 candidate, high security</td></tr>
+            <tr><td>10</td><td><strong>Simd</strong></td><td>Romain Bouque</td><td>2008</td><td>SHA-3 candidate, SIMD optimization</td></tr>
+            <tr><td>11</td><td><strong>Echo</strong></td><td>Christian Rechberger</td><td>2008</td><td>SHA-3 candidate, AES-oriented</td></tr>
+        </tbody>
+    </table>
+
+    <h3>1.3 Working Principle</h3>
+    <p>Each data block passes sequentially through all 11 algorithms:</p>
+    <pre>Input Data → Blake → BMW → Groestl → JH → Keccak → Skein → Luffa → Cubehash → Shavite → Simd → Echo → Output Hash</pre>
+
+    <h3>1.4 X11 Performance</h3>
+    <h4>X11 ASIC Miners</h4>
+    <table>
+        <thead><tr><th>Model</th><th>Manufacturer</th><th>Hashrate</th><th>Power</th><th>Efficiency</th></tr></thead>
+        <tbody>
+            <tr><td>Baikal BK-X</td><td>Baikal</td><td>1.35 GH/s</td><td>200 W</td><td>6.75 MH/s/W</td></tr>
+            <tr><td>Baikal BK-G28</td><td>Baikal</td><td>~4 GH/s</td><td>~600 W</td><td>~6.7 MH/s/W</td></tr>
+            <tr><td>iBeLink DM22G</td><td>iBeLink</td><td>22 GH/s</td><td>2100 W</td><td>10.5 MH/s/W</td></tr>
+            <tr><td>iBeLink DM11G</td><td>iBeLink</td><td>11 GH/s</td><td>1050 W</td><td>10.5 MH/s/W</td></tr>
+            <tr><td>Pinidea X11</td><td>Pinidea</td><td>1.8 GH/s</td><td>300 W</td><td>6.0 MH/s/W</td></tr>
+        </tbody>
+    </table>
+
+    <h4>X11 GPU Mining (for comparison)</h4>
+    <table>
+        <thead><tr><th>GPU</th><th>Hashrate</th><th>Power</th><th>Efficiency</th></tr></thead>
+        <tbody>
+            <tr><td>NVIDIA GTX 1080 Ti</td><td>20-23 MH/s</td><td>250 W</td><td>0.08-0.09 MH/s/W</td></tr>
+            <tr><td>NVIDIA RTX 2080 Ti</td><td>30-35 MH/s</td><td>260 W</td><td>0.11-0.13 MH/s/W</td></tr>
+            <tr><td>NVIDIA RTX 3090</td><td>45-50 MH/s</td><td>350 W</td><td>0.13-0.14 MH/s/W</td></tr>
+            <tr><td>NVIDIA RTX 4090</td><td>60-70 MH/s</td><td>450 W</td><td>0.13-0.15 MH/s/W</td></tr>
+        </tbody>
+    </table>
+    <div class="highlight-box"><strong>Efficiency Analysis:</strong> X11 ASIC miners are <strong>100-200 times</strong> more efficient than GPUs in terms of hashrate per watt. This makes X11 mining on graphics cards economically unviable at industrial scales.</div>
+
+    <hr>
+
+    <!-- Section 2: MinotaurX -->
+    <h2>🔬 Section 2: MinotaurX — The Innovative CPU/GPU Algorithm</h2>
+
+    <h3>2.1 Origins and Philosophy</h3>
+    <p>MinotaurX was developed in 2025 as a response to the problem of mining centralization. While X11 became accessible to ASICs, the cryptocurrency community desperately needed an algorithm that would allow ordinary users to participate in mining again using their home computers.</p>
+    <p>The name "MinotaurX" symbolizes: <strong>Minotaur</strong> — a mythical creature combining different forms (just as the algorithm combines CPU and GPU mining) and <strong>X</strong> — a reference to X11, emphasizing technological continuity.</p>
+
+    <h3>2.2 MinotaurX Technical Specification</h3>
+    <p>MinotaurX extends the X11 concept by adding a 12th algorithm and optimizing the entire chain for efficient CPU and GPU operation:</p>
+    <table>
+        <thead><tr><th>#</th><th>Algorithm</th><th>Developer</th><th>Year</th><th>Optimization</th></tr></thead>
+        <tbody>
+            <tr><td>1-11</td><td>X11 Algorithms</td><td>Various</td><td>2008</td><td>Optimized variants</td></tr>
+            <tr><td>12</td><td><strong>MinotaurX</strong></td><td>Bitzal Core Team</td><td>2025</td><td>Final mixing, ASIC resistance</td></tr>
+        </tbody>
+    </table>
+
+    <h3>2.3 Key Features</h3>
+    <div class="two-columns">
+        <div class="card"><h4>⚡ CPU Optimization</h4><p>AVX2/AVX-512 instructions, multithreaded processing, cache locality, vectorization for modern processors.</p></div>
+        <div class="card"><h4>🎮 GPU Optimization</h4><p>OpenCL/CUDA support, Wave32/Wave64 optimization, register pressure reduction, maximum compute unit utilization.</p></div>
+        <div class="card"><h4>🛡️ ASIC Resistance</h4><p>12-algorithm chain, heterogeneous operations, memory-intensive steps, branching, floating point operations.</p></div>
+    </div>
+
+    <h3>2.4 MinotaurX Performance</h3>
+    <h4>CPU Mining</h4>
+    <table>
+        <thead><tr><th>Processor</th><th>Architecture</th><th>Cores</th><th>Hashrate</th><th>Power</th><th>Efficiency</th></tr></thead>
+        <tbody>
+            <tr><td>AMD Ryzen 9 7950X</td><td>Zen 4</td><td>16/32</td><td>12.5 KH/s</td><td>170 W</td><td>73.5 H/s/W</td></tr>
+            <tr><td>AMD Ryzen 9 5950X</td><td>Zen 3</td><td>16/32</td><td>9.8 KH/s</td><td>105 W</td><td>93.3 H/s/W</td></tr>
+            <tr><td>Intel Core i9-13900K</td><td>Raptor Lake</td><td>24/32</td><td>11.8 KH/s</td><td>125 W</td><td>94.4 H/s/W</td></tr>
+            <tr><td>Apple M2 Max</td><td>ARM</td><td>12/12</td><td>7.8 KH/s</td><td>45 W</td><td>173.3 H/s/W</td></tr>
+        </tbody>
+    </table>
+
+    <h4>GPU Mining</h4>
+    <table>
+        <thead><tr><th>GPU</th><th>Architecture</th><th>Hashrate</th><th>Power</th><th>Efficiency</th></tr></thead>
+        <tbody>
+            <tr><td>NVIDIA RTX 4090</td><td>Ada Lovelace</td><td>195 KH/s</td><td>450 W</td><td>433 H/s/W</td></tr>
+            <tr><td>NVIDIA RTX 4080</td><td>Ada Lovelace</td><td>165 KH/s</td><td>320 W</td><td>516 H/s/W</td></tr>
+            <tr><td>AMD Radeon RX 7900 XTX</td><td>RDNA 3</td><td>175 KH/s</td><td>355 W</td><td>493 H/s/W</td></tr>
+            <tr><td>NVIDIA RTX 3090 Ti</td><td>Ampere</td><td>145 KH/s</td><td>450 W</td><td>322 H/s/W</td></tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <!-- Section 3: Comparative Analysis -->
+    <h2>📊 Section 3: Comparative Analysis of X11 and MinotaurX</h2>
+    <table>
+        <thead><tr><th>Parameter</th><th>X11</th><th>MinotaurX</th></tr></thead>
+        <tbody>
+            <tr><td>Creation Year</td><td>2014</td><td>2025</td></tr>
+            <tr><td>Target Audience</td><td>ASIC miners, large farms</td><td>CPU/GPU miners, home users</td></tr>
+            <tr><td>Number of Algorithms</td><td>11</td><td>12</td></tr>
+            <tr><td>ASIC Availability</td><td>Yes (Baikal, iBeLink)</td><td>No</td></tr>
+            <tr><td>Hashrate Range</td><td>MH/s - GH/s</td><td>KH/s - MH/s</td></tr>
+            <tr><td>Block Reward Share</td><td>45% to miner</td><td>70% to miner</td></tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <!-- Section 4: Economic Model -->
+    <h2>💰 Section 4: Economic Model of Dual-Algorithm Mining</h2>
+    <h3>4.1 Block Reward Distribution</h3>
+    <table>
+        <thead><tr><th>Recipient</th><th>X11</th><th>MinotaurX</th></tr></thead>
+        <tbody>
+            <tr><td>Miner</td><td>45%</td><td>70%</td></tr>
+            <tr><td>Masternode</td><td>45%</td><td>20%</td></tr>
+            <tr><td>Treasury (DAO)</td><td>10%</td><td>10%</td></tr>
+        </tbody>
+    </table>
+    <div class="highlight-box"><strong>Rationale:</strong> Higher reward share for MinotaurX miners (70% vs 45%) compensates for lower computational power and higher residential electricity costs, ensuring fair participation for home miners.</div>
+
+    <hr>
+
+    <!-- Section 5: DGW -->
+    <h2>🌊 Section 5: DarkGravityWave — Difficulty Adjustment Algorithm</h2>
+    <p>Both mining algorithms use a unified difficulty adjustment algorithm — <strong>DarkGravityWave (DGW)</strong> — which provides smooth difficulty adjustment with each new block, protection against sudden hashrate spikes, and fair block distribution over time.</p>
+    <pre>Difficulty_n = Difficulty_(n-24) * (2^24) / (2^24 - 1) + Target_Time / Actual_Time</pre>
+    <div class="info-box"><strong>DGW Advantages:</strong> Algorithm independence, fast response (adjustment on each block), manipulation protection (averaging eliminates outliers), proven stability in Dash and other coins.</div>
+
+    <hr>
+
+    <!-- Section 6: Mining Ecosystem -->
+    <h2>🏭 Section 6: Bitzal Mining Ecosystem</h2>
+    <div class="diagram">
+        ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐<br>
+        │   ASIC Miners   │    │    GPU Miners   │    │    CPU Miners   │<br>
+        │      (X11)      │    │   (MinotaurX)   │    │   (MinotaurX)   │<br>
+        └────────┬────────┘    └────────┬────────┘    └────────┬────────┘<br>
+                 └──────────────────┼──────────────────┘<br>
+                                    ▼<br>
+                         ┌─────────────────────┐<br>
+                         │    Masternodes      │<br>
+                         │  (DAO/Governance)   │<br>
+                         └──────────┬──────────┘<br>
+                                    ▼<br>
+                         ┌─────────────────────┐<br>
+                         │     Treasury        │<br>
+                         │     (Funding)       │<br>
+                         └─────────────────────┘
+    </div>
+
+    <hr>
+
+    <!-- Section 7: Technical Details -->
+    <h2>💻 Section 7: Technical Details for Developers</h2>
+    <h3>7.1 X11 Implementation</h3>
+    <pre>// Example from src/crypto/x11.h
+class CX11Hash {
+public:
+    void Write(const unsigned char* data, size_t len);
+    void Finalize(unsigned char* hash);
+    static const size_t OUTPUT_SIZE = 32;
+private:
+    blake_hash m_blake;
+    bmw_hash m_bmw;
+    groestl_hash m_groestl;
+    jh_hash m_jh;
+    keccak_hash m_keccak;
+    skein_hash m_skein;
+    luffa_hash m_luffa;
+    cubehash_hash m_cubehash;
+    shavite_hash m_shavite;
+    simd_hash m_simd;
+    echo_hash m_echo;
+};</pre>
+
+    <h3>7.2 Proof-of-Work Verification</h3>
+    <pre>// Example from src/pow.cpp
+bool CheckProofOfWork(const CBlockHeader& block, const Consensus::Params& params) {
+    POW_TYPE powType = block.GetPoWType();
+    arith_uint256 bnTarget;
+    bnTarget.SetCompact(block.nBits);
+    uint256 hash = block.GetPoWHash();
+    
+    if (UintToArith256(hash) > bnTarget)
+        return false;
+        
+    arith_uint256 bnLimit;
+    if (powType == POW_TYPE_X11) {
+        bnLimit = UintToArith256(params.powLimit);
+    } else {
+        bnLimit = UintToArith256(params.powTypeLimits[POW_TYPE_MINOTAURX]);
+    }
+    return bnTarget <= bnLimit;
+}</pre>
+
+    <hr>
+
+    <!-- Conclusion -->
+    <h2>🎯 Conclusion</h2>
+    <p>Bitzal's dual-algorithm system represents an evolutionary step in Proof-of-Work mining development:</p>
+    <ul>
+        <li><strong>X11</strong> provides base network security through proven ASIC mining</li>
+        <li><strong>MinotaurX</strong> returns mining opportunities to ordinary users</li>
+        <li><strong>DarkGravityWave</strong> ensures smooth difficulty adjustment</li>
+        <li><strong>Differentiated reward distribution</strong> creates fair economics for all participants</li>
+    </ul>
+    <div class="highlight-box">
+        <strong>This approach ensures:</strong><br>
+        • <strong>Decentralization</strong> — mining accessible to everyone<br>
+        • <strong>Security</strong> — high combined hashrate protects the network<br>
+        • <strong>Resilience</strong> — dependence on a single equipment type is eliminated<br>
+        • <strong>Community</strong> — everyone can contribute to network development
+    </div>
+    <p>Bitzal is a cryptocurrency created by the community for the community, where every participant can find their role and receive fair rewards.</p>
+
+    <div class="footer">
+        <strong style="color: var(--primary);">Bitzal Core</strong> — Fair Mining for Everyone<br>
+        X11 + MinotaurX | Version 1.0 | March 2026
+    </div>
+
+</div>
+</body>
+</html>
