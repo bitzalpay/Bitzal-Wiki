@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitzal Core - Official Wiki</title>
+    <style>
+        :root {
+            --primary: #ff7a00;
+            --primary-dark: #e56c00;
+            --text-dark: #1a1a1a;
+            --text-light: #4a4a4a;
+            --bg-light: #fafafa;
+            --border: #e5e5e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            padding: 2rem;
+        }
+
+        /* Logo */
+        .logo {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Header */
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary);
+            color: var(--text-dark);
+        }
+
+        /* Ссылки */
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        /* Стили для списков */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        li {
+            margin-bottom: 1.5rem;
+        }
+        
+        .link-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .link-item a {
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-bottom: 0.25rem;
+        }
+        
+        .link-item .description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-left: 0;
+            display: block;
+        }
+
+        /* Заголовки разделов */
+        h2 {
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        /* Стили для подразделов */
+        .section-list {
+            list-style: none;
+            padding-left: 1rem;
+        }
+        
+        .section-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 0;
+        }
+        
+        .section-list li a {
+            font-weight: normal;
+            font-size: 1rem;
+        }
+
+        /* Разделитель */
+        hr {
+            margin: 2rem 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        /* Футер */
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Logo -->
+    <div class="logo">
+        <img src="https://github.com/bitzalpay/Bitzal-Wiki/blob/master/assets/small.png?raw=true" alt="Bitzal" width="300"/>
+    </div>
+
+    <!-- Title -->
+    <h1>Bitzal Core The Basics</h1>
+
+    <!-- Основные ссылки -->
+    <ul>
+        <li class="link-item">
+            <a href="whitepaper.html"><strong>Bitzal Whitepaper</strong></a><br/>
+            <span class="description">White papers allow you to fully disclose the idea behind the project with a full description of the project.</span>
+        </li>
+        <li class="link-item">
+            <a href="roadmap.html"><strong>Official Road Map</strong></a><br/>
+            <span class="description">Road Map is a document that visualizes the strategic plan of the project: its main goals and objectives, deadlines, responsibilities, and milestones. The roadmap helps all participants understand why the project is needed and what should be achieved as a result.</span>
+        </li>
+    </ul>
+
+    <!-- Bitzal Multi-algorithm -->
+    <h2>Bitzal Multi-algorithm</h2>
+    <ul class="section-list">
+        <li><a href="multi-algorithm-description.html">Description and application of the algorithm</a></li>
+        <li><a href="multi-algorithm-features.html">Features</a></li>
+        <li><a href="platform-description.html">Platform Description</a></li>
+    </ul>
+
+    <!-- Blockchain -->
+    <h2>Blockchain</h2>
+    <ul class="section-list">
+        <li><a href="blockchain-overview.html">Blockchain Overview</a></li>
+        <li><a href="transactions.html">Transactions</a></li>
+    </ul>
+
+    <!-- The Platform -->
+    <h2>The Platform</h2>
+    <ul class="section-list">
+        <li><a href="bitzal-platform.html">Bitzal Platform</a></li>
+        <li><a href="bitzal-crypto-wallets.html">Bitzal crypto wallets</a></li>
+    </ul>
+
+    <!-- Wallets -->
+    <h2>Wallets</h2>
+    <ul class="section-list">
+        <li><a href="wallets-features.html">Features</a></li>
+        <li><a href="hellar-crypto-wallet.html">Acquisition a Hellar crypto wallet</a></li>
+        <li><a href="download-wallets.html">Download & setting up wallets</a></li>
+    </ul>
+
+    <!-- Footer -->
+    <div class="footer">
+        <strong style="color: var(--primary);">Bitzal Core</strong> — Building the future of digital currency
+    </div>
+
+</div>
+</body>
+</html>
