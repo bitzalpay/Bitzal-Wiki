@@ -2,12 +2,12 @@
 <br/><br/>
 <img src="https://github.com/bitzalpay/Bitzal-Wiki/blob/master/assets/small.png" alt="Bitzal" width="300"/>
 </h1>
-
 <div align="center">
 <h1 align="center">Bitzal Core The Basics</h1>
 </div>
 
 <div align="center">
+
 
 - <a href="whitepaper.md" style="color: #ff7a00; text-decoration: none;"><strong>Bitzal Whitepaper</strong></a><br/>
   White papers allow you to fully disclose the idea behind the project with a full description of the project.
