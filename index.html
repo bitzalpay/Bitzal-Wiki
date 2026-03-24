@@ -119,17 +119,25 @@
         /* Стили для подразделов */
         .section-list {
             list-style: none;
-            padding-left: 1rem;
+            padding-left: 0;
         }
         
         .section-list li {
-            margin-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
             padding-left: 0;
         }
         
         .section-list li a {
-            font-weight: normal;
-            font-size: 1rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-bottom: 0.25rem;
+        }
+        
+        .section-list .description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            display: block;
         }
 
         /* Разделитель */
@@ -194,31 +202,61 @@
     <!-- Bitzal Multi-algorithm -->
     <h2>Bitzal Multi-algorithm</h2>
     <ul class="section-list">
-        <li><a href="multi-algo.html">Description and application of the algorithm</a></li>
-        <li><a href="multi-algo.html#performance">Features</a></li>
-        <li><a href="multi-algo.html#economic-model">Platform Description</a></li>
+        <li>
+            <a href="multi-algo.html"><strong>Description and application of the algorithm</strong></a><br/>
+            <span class="description">Detailed technical overview of X11 and MinotaurX mining algorithms, their architecture, performance metrics, and how they secure the Bitzal network.</span>
+        </li>
+        <li>
+            <a href="multi-algo.html#features"><strong>Features</strong></a><br/>
+            <span class="description">Advanced capabilities of dual-algorithm mining — ASIC resistance, CPU/GPU optimization, energy efficiency, and network security enhancements.</span>
+        </li>
+        <li>
+            <a href="multi-algo.html#platform"><strong>Platform Description</strong></a><br/>
+            <span class="description">Complete ecosystem overview — how miners, masternodes, and the treasury interact within Bitzal's unique dual-algorithm Proof-of-Work system.</span>
+        </li>
     </ul>
 
     <!-- Blockchain -->
     <h2>Blockchain</h2>
     <ul class="section-list">
-        <li><a href="blockchain-overview.html">Blockchain Overview</a></li>
-        <li><a href="transactions.html">Transactions</a></li>
+        <li>
+            <a href="blockchain-overview.html"><strong>Blockchain Overview</strong></a><br/>
+            <span class="description">Comprehensive guide to Bitzal's blockchain architecture, consensus mechanism, and network infrastructure.</span>
+        </li>
+        <li>
+            <a href="transactions.html"><strong>Transactions</strong></a><br/>
+            <span class="description">Understanding transaction structure, confirmation process, InstantSend, and PrivateSend features.</span>
+        </li>
     </ul>
 
     <!-- The Platform -->
     <h2>The Platform</h2>
     <ul class="section-list">
-        <li><a href="bitzal-platform.html">Bitzal Platform</a></li>
-        <li><a href="bitzal-crypto-wallets.html">Bitzal crypto wallets</a></li>
+        <li>
+            <a href="bitzal-platform.html"><strong>Bitzal Platform</strong></a><br/>
+            <span class="description">Core platform features, decentralized governance, treasury system, and ecosystem development.</span>
+        </li>
+        <li>
+            <a href="bitzal-crypto-wallets.html"><strong>Bitzal crypto wallets</strong></a><br/>
+            <span class="description">Official wallet solutions for desktop and mobile, security features, and best practices for storing ZAL.</span>
+        </li>
     </ul>
 
     <!-- Wallets -->
     <h2>Wallets</h2>
     <ul class="section-list">
-        <li><a href="wallets-features.html">Features</a></li>
-        <li><a href="hellar-crypto-wallet.html">Acquisition a Hellar crypto wallet</a></li>
-        <li><a href="download-wallets.html">Download & setting up wallets</a></li>
+        <li>
+            <a href="wallets-features.html"><strong>Features</strong></a><br/>
+            <span class="description">Advanced wallet capabilities — HD wallet support, multi-signature, staking, and masternode management.</span>
+        </li>
+        <li>
+            <a href="hellar-crypto-wallet.html"><strong>Acquisition a Hellar crypto wallet</strong></a><br/>
+            <span class="description">Step-by-step guide to obtaining and setting up your Hellar wallet for seamless Bitzal transactions.</span>
+        </li>
+        <li>
+            <a href="download-wallets.html"><strong>Download & setting up wallets</strong></a><br/>
+            <span class="description">Official downloads for Windows, Linux, and macOS platforms with detailed installation and configuration guides.</span>
+        </li>
     </ul>
 
     <!-- Footer -->
