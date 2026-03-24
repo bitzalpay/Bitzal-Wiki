@@ -3,7 +3,7 @@
 <img src="https://github.com/bitzalpay/Bitzal-Wiki/blob/master/assets/small.png" alt="Bitzal" width="300"/>
 </h1>
 </div>
-<h1 align="center">Bitzal Core The Basics</h1>
+<h1>Bitzal Core The Basics</h1>
 </div>
 
 </div>
