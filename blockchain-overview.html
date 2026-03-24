@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain - Bitzal Core</title>
+    <style>
+        :root {
+            --primary: #ff7a00;
+            --primary-dark: #e56c00;
+            --primary-light: #ff9a33;
+            --text-dark: #1a1a1a;
+            --text-light: #4a4a4a;
+            --bg-light: #fafafa;
+            --border: #e5e5e5;
+            --code-bg: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            padding: 2rem;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .version {
+            text-align: center;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 1.8rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .highlight-box {
+            background: #fff8f0;
+            border-left: 4px solid var(--primary);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+
+        .highlight-box strong {
+            color: var(--primary);
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            border: 1px solid var(--border);
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        tr:hover {
+            background: #fef9f0;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 1.8rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+            color: var(--text-light);
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: #f9f9f9;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border-top: 3px solid var(--primary);
+        }
+
+        .card h4 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'SF Mono', 'Menlo', 'Monaco', 'Cascadia Code', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin: 1rem 0;
+            border: 1px solid var(--border);
+        }
+
+        code {
+            font-family: 'SF Mono', 'Menlo', 'Monaco', 'Cascadia Code', monospace;
+            background: var(--code-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        hr {
+            margin: 2rem 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="logo">
+        <img src="https://github.com/bitzalpay/Bitzal-Wiki/blob/master/assets/small.png?raw=true" alt="Bitzal" width="280"/>
+    </div>
+
+    <h1>Blockchain</h1>
+    <div class="subtitle">Bitzal Core Blockchain Architecture & Consensus</div>
+    <div class="version">Version 1.0 | March 2026</div>
+
+    <!-- Introduction -->
+    <h2>📖 Blockchain Overview</h2>
+    <p>Bitzal Core utilizes a hybrid blockchain architecture that combines the security of Proof-of-Work (PoW) with the advanced functionality of a masternode network. This two-tier approach enables features such as instant transactions, optional privacy, and decentralized governance while maintaining the decentralization and security guarantees of traditional blockchain systems.</p>
+    <p>The Bitzal blockchain is designed for scalability, with 5MB blocks and a dynamic block reward system that ensures long-term sustainability. The network achieves finality through a combination of PoW confirmations and masternode quorum consensus.</p>
+
+    <div class="highlight-box">
+        <strong>Key Blockchain Specifications:</strong><br>
+        • <strong>Block Time:</strong> ~2.5 minutes<br>
+        • <strong>Block Size:</strong> 5 MB (activated April 2026)<br>
+        • <strong>Consensus:</strong> Proof-of-Work (X11 + MinotaurX) with Masternode Layer<br>
+        • <strong>Total Supply:</strong> 84,000,000 ZAL<br>
+        • <strong>Transaction Finality:</strong> InstantSend (2-3 seconds) + 6 block confirmations<br>
+        • <strong>Privacy:</strong> Optional PrivateSend coin mixing
+    </div>
+
+    <hr>
+
+    <!-- Blockchain Architecture -->
+    <h2>🏗️ Blockchain Architecture</h2>
+    
+    <h3>1. Two-Tier Network Structure</h3>
+    <p>Bitzal's architecture consists of two distinct layers that work together to provide security, functionality, and scalability:</p>
+    
+    <div class="two-columns">
+        <div class="card">
+            <h4>⛏️ Tier 1: Proof-of-Work Miners</h4>
+            <p>Responsible for securing the blockchain through computational work. Miners solve complex cryptographic puzzles to create new blocks, validate transactions, and earn block rewards. Bitzal supports two mining algorithms: X11 (ASIC) and MinotaurX (CPU/GPU).</p>
+        </div>
+        <div class="card">
+            <h4>🖥️ Tier 2: Masternode Network</h4>
+            <p>A network of full nodes that hold 8,000 ZAL collateral. Masternodes provide advanced services including InstantSend, PrivateSend, governance voting, and network consensus. They receive 45% (X11) or 20% (MinotaurX) of block rewards.</p>
+        </div>
+    </div>
+
+    <h3>2. Block Structure</h3>
+    <p>Each block in the Bitzal blockchain contains the following components:</p>
+    <pre>
+┌─────────────────────────────────────────┐
+│              Block Header                │
+├─────────────────────────────────────────┤
+│ • Version           (4 bytes)           │
+│ • Previous Block Hash (32 bytes)        │
+│ • Merkle Root       (32 bytes)          │
+│ • Timestamp         (4 bytes)           │
+│ • Difficulty Target (4 bytes)           │
+│ • Nonce             (4 bytes)           │
+│ • Algorithm Type    (X11 / MinotaurX)   │
+├─────────────────────────────────────────┤
+│            Transaction List              │
+├─────────────────────────────────────────┤
+│ • Coinbase Transaction (miner reward)   │
+│ • Masternode Payment                    │
+│ • Treasury Payment                      │
+│ • User Transactions                     │
+└─────────────────────────────────────────┘</pre>
+
+    <hr>
+
+    <!-- Consensus Mechanism -->
+    <h2>⚙️ Consensus Mechanism</h2>
+    
+    <h3>1. Proof-of-Work (PoW)</h3>
+    <p>Bitzal uses a dual-algorithm Proof-of-Work system. Miners compete to find a hash below the current difficulty target. The winning miner receives block rewards and transaction fees.</p>
+    
+    <table>
+        <thead>
+            <tr><th>Algorithm</th><th>Target Audience</th><th>Block Reward Share</th><th>Difficulty Adjustment</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>X11</strong></td><td>ASIC miners</td><td>45% of block reward</td><td>DarkGravityWave (per block)</td></tr>
+            <tr><td><strong>MinotaurX</strong></td><td>CPU/GPU miners</td><td>70% of block reward</td><td>DarkGravityWave (per block)</td></tr>
+        </tbody>
+    </table>
+
+    <h3>2. Masternode Consensus (DIP3)</h3>
+    <p>Bitzal implements Deterministic Masternode Lists (DIP3), which provide:</p>
+    <ul>
+        <li><strong>Deterministic Masternode Registration</strong> — Masternodes are registered on-chain with their collateral transaction</li>
+        <li><strong>Automatic Quorum Formation</strong> — Masternodes are automatically selected for quorums using a deterministic algorithm</li>
+        <li><strong>LLMQ (Long-Living Masternode Quorums)</strong> — Quorums that persist for multiple blocks, enabling efficient consensus</li>
+        <li><strong>InstantSend & ChainLocks</strong> — Quorum-based transaction locking for instant finality</li>
+    </ul>
+
+    <h3>3. DarkGravityWave (DGW) Difficulty Adjustment</h3>
+    <p>Both mining algorithms use DarkGravityWave for difficulty adjustment. DGW recalculates difficulty every block using a moving average of the last 24 blocks, ensuring:</p>
+    <ul>
+        <li>Fast response to hash rate fluctuations</li>
+        <li>Protection against time warp attacks</li>
+        <li>Smooth difficulty transitions</li>
+        <li>Consistent block times (~2.5 minutes)</li>
+    </ul>
+
+    <hr>
+
+    <!-- Transactions -->
+    <h2>📝 Transactions</h2>
+    
+    <h3>1. Transaction Structure</h3>
+    <p>Bitzal transactions follow the UTXO (Unspent Transaction Output) model, similar to Bitcoin but with additional features:</p>
+    
+    <pre>
+Transaction {
+    Version: 2
+    Inputs: [{
+        Previous Output Hash
+        Previous Output Index
+        Signature Script
+        Sequence Number
+    }]
+    Outputs: [{
+        Amount (ZAL)
+        Script (recipient address)
+    }]
+    LockTime: 0
+    Extra Features: InstantSend | PrivateSend
+}</pre>
+
+    <h3>2. Transaction Types</h3>
+    
+    <div class="two-columns">
+        <div class="card">
+            <h4>⚡ InstantSend Transactions</h4>
+            <p>Transactions locked by masternode quorum consensus, achieving finality in 2-3 seconds. Ideal for point-of-sale and time-sensitive payments. Requires no additional fees.</p>
+        </div>
+        <div class="card">
+            <h4>🔒 PrivateSend Transactions</h4>
+            <p>Optional coin mixing feature that breaks the link between transaction inputs and outputs. Uses a multi-stage mixing process coordinated by masternodes. Provides enhanced privacy for users who require it.</p>
+        </div>
+        <div class="card">
+            <h4>📋 Governance Transactions</h4>
+            <p>Special transaction types for submitting proposals, voting on budgets, and distributing treasury funds. All governance actions are recorded on-chain.</p>
+        </div>
+        <div class="card">
+            <h4>👥 Masternode Registration</h4>
+            <p>Transactions that lock 8,000 ZAL as collateral and register a masternode on the network. The collateral remains locked while the masternode is active.</p>
+        </div>
+    </div>
+
+    <h3>3. Transaction Confirmation Process</h3>
+    <ol>
+        <li><strong>Broadcast:</strong> Transaction is broadcast to the network</li>
+        <li><strong>Mempool:</strong> Transaction enters the memory pool</li>
+        <li><strong>InstantSend (optional):</strong> If enabled, masternode quorum locks inputs (2-3 seconds)</li>
+        <li><strong>Block Inclusion:</strong> Miner includes transaction in a block (~2.5 minutes)</li>
+        <li><strong>Confirmations:</strong> Each subsequent block adds confirmation depth</li>
+        <li><strong>Finality:</strong> 6 confirmations recommended (~15 minutes)</li>
+    </ol>
+
+    <div class="highlight-box">
+        <strong>Transaction Fees:</strong><br>
+        • Standard transactions: 0.0001 ZAL per KB<br>
+        • InstantSend: No additional fee<br>
+        • PrivateSend: 0.001 ZAL mixing fee (distributed to masternodes)
+    </div>
+
+    <hr>
+
+    <!-- Network Parameters -->
+    <h2>🌐 Network Parameters</h2>
+    
+    <table>
+        <thead>
+            <tr><th>Parameter</th><th>Value</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Block Time</strong></td><td>~2.5 minutes</td><td>Target time between blocks</td></tr>
+            <tr><td><strong>Block Size</strong></td><td>5 MB</td><td>Maximum block size (activated April 2026)</td></tr>
+            <tr><td><strong>Transaction Throughput</strong></td><td>~868 TX/block</td><td>5 TX/sec + 2 TS/sec capacity</td></tr>
+            <tr><td><strong>Confirmation Time</strong></td><td>~15 minutes</td><td>6 confirmations recommended</td></tr>
+            <tr><td><strong>InstantSend Finality</strong></td><td>2-3 seconds</td><td>Masternode quorum lock</td></tr>
+            <tr><td><strong>Masternode Collateral</strong></td><td>8,000 ZAL</td><td>Locked collateral for masternode operation</td></tr>
+            <tr><td><strong>Maximum Supply</strong></td><td>84,000,000 ZAL</td><td>Fixed total supply</td></tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <!-- Blockchain Security -->
+    <h2>🛡️ Blockchain Security</h2>
+    
+    <h3>1. Security Layers</h3>
+    <ul>
+        <li><strong>Proof-of-Work:</strong> Computational security preventing double-spend attacks</li>
+        <li><strong>Masternode Quorums:</strong> Instant transaction locking and ChainLocks preventing reorg attacks</li>
+        <li><strong>Spork Technology:</strong> Multi-signature (3-of-5) feature activation preventing malicious upgrades</li>
+        <li><strong>Deterministic Masternode Lists:</strong> Sybil resistance through collateral requirement</li>
+        <li><strong>DarkGravityWave:</strong> Protection against difficulty manipulation</li>
+    </ul>
+
+    <h3>2. Attack Resistance</h3>
+    
+    <table>
+        <thead>
+            <tr><th>Attack Type</th><th>Protection Mechanism</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>51% Attack</td><td>High combined hash rate (X11 + MinotaurX)</td></tr>
+            <tr><td>Double Spend</td><td>InstantSend locking + PoW confirmations</td></tr>
+            <tr><td>Reorg Attack</td><td>ChainLocks from masternode quorums</td></tr>
+            <tr><td>Sybil Attack</td><td>Masternode collateral requirement (8,000 ZAL)</td></tr>
+            <tr><td>Time Warp</td><td>DarkGravityWave difficulty adjustment</td></tr>
+            <tr><td>Eclipse Attack</td><td>Deterministic masternode connections</td></tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <!-- Future Development -->
+    <h2>🚀 Future Blockchain Development</h2>
+    
+    <h3>Phase 2 — Evolution (2026-2027)</h3>
+    <ul>
+        <li>Enhanced governance objects for users, groups, and accounts</li>
+        <li>Advanced state transitions for masternode evaluation</li>
+        <li>Multi-key spork technology for secure protocol updates</li>
+        <li>Improved scalability with tier-2 optimization</li>
+    </ul>
+    
+    <h3>Phase 3 — Scaling & Mass Adoption (2028+)</h3>
+    <ul>
+        <li>ZalDrive: IPFS-based decentralized storage integration</li>
+        <li>Specialized masternode hardware for massive parallelization</li>
+        <li>Contract system (smart contracts) on Bitzal blockchain</li>
+        <li>Cross-chain atomic swaps with Bitcoin, Litecoin, and other networks</li>
+        <li>Logarithmic block size growth model for continued scaling</li>
+    </ul>
+
+    <div class="highlight-box">
+        <strong>Blockchain Evolution:</strong> Bitzal's blockchain is designed for continuous improvement. Through the decentralized governance system, the community can propose and vote on protocol upgrades, ensuring the network evolves to meet future demands without centralized control.
+    </div>
+
+    <hr>
+
+    <!-- References -->
+    <h2>📚 References</h2>
+    <ul>
+        <li><a href="multi-algo.html" style="color: var(--primary);">Bitzal Multi-Algorithm Documentation</a> — Detailed PoW specifications</li>
+        <li><a href="tokenomics.html" style="color: var(--primary);">Tokenomics</a> — Emission schedule and reward distribution</li>
+        <li><a href="roadmap.html" style="color: var(--primary);">Roadmap</a> — Development timeline and milestones</li>
+        <li><a href="whitepaper.html" style="color: var(--primary);">WhitePaper</a> — Complete project documentation</li>
+    </ul>
+
+    <div class="footer">
+        <strong style="color: var(--primary);">Bitzal Core</strong> — Secure. Scalable. Decentralized.<br>
+        Blockchain Version 1.0 | March 2026
+    </div>
+
+</div>
+</body>
+</html>
