@@ -12,7 +12,7 @@
 - <a href="whitepaper.md" style="color: #ff7a00; text-decoration: none;"><strong>Bitzal Whitepaper</strong></a><br/>
   White papers allow you to fully disclose the idea behind the project with a full description of the project.<br>
 
-- <a href="roadmap.md" style="color: #ff7a00; text-decoration: none;"><strong>Official Road Map</strong></a><br/>
+- <a href="[roadmap.md](https://github.com/bitzalpay/Bitzal-Wiki/blob/master/roadmap.md)" style="color: #ff7a00; text-decoration: none;"><strong>Official Road Map</strong></a><br/>
   Road Map is a document that visualizes the strategic plan of the project: its main goals and objectives, deadlines, responsibilities, and milestones. The roadmap helps all participants understand why the project is needed and what should be achieved as a result.
 
 </div>
