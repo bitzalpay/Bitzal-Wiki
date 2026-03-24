@@ -6,13 +6,12 @@
 <div align="center">
 <h1 align="center">
 
-Bitzal Core
+Bitzal Core The Basics
 ===========
 
 <div align="center">
 
 
-## The Basics
 
 - [Bitzal Whitepaper](whitepaper.md)  
   White papers allow you to fully disclose the idea behind the project with a full description of the project.  
