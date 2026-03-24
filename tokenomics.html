@@ -140,6 +140,29 @@
             margin-bottom: 0.5rem;
         }
 
+        .allocation-bar {
+            background: #e5e5e5;
+            border-radius: 8px;
+            height: 24px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .allocation-segment {
+            height: 100%;
+            float: left;
+            text-align: center;
+            color: white;
+            font-size: 0.8rem;
+            line-height: 24px;
+        }
+        
+        .segment-dev { background: #ff7a00; width: 45%; }
+        .segment-marketing { background: #e56c00; width: 25%; }
+        .segment-liquidity { background: #cc5c00; width: 15%; }
+        .segment-ops { background: #b34c00; width: 10%; }
+        .segment-legal { background: #993c00; width: 5%; }
+
         .footer {
             text-align: center;
             margin-top: 2rem;
@@ -191,6 +214,64 @@
             <tr><td><strong>Mining (Blocks 11+)</strong></td><td>75,600,000 ZAL (90%)</td></tr>
         </tbody>
     </table>
+
+    <!-- Premine Allocation -->
+    <h2>💰 Premine Allocation — 8,400,000 ZAL (10%)</h2>
+    <p>The premine is strategically allocated to ensure sustainable development, ecosystem growth, and long-term project success. All funds are subject to transparent vesting schedules and multi-signature governance.</p>
+    
+    <div class="allocation-bar">
+        <div class="allocation-segment segment-dev">Development 45%</div>
+        <div class="allocation-segment segment-marketing">Marketing 25%</div>
+        <div class="allocation-segment segment-liquidity">Liquidity 15%</div>
+        <div class="allocation-segment segment-ops">Operations 10%</div>
+        <div class="allocation-segment segment-legal">Legal 5%</div>
+    </div>
+    
+    <table>
+        <thead>
+            <tr><th>Category</th><th>Amount (ZAL)</th><th>Percentage</th><th>Vesting / Usage</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Development & Core Team</strong></td>
+                <td>3,780,000</td>
+                <td>45%</td>
+                <td>24-month vesting with 6-month cliff. Rewards for core developers, protocol upgrades, security audits, and infrastructure maintenance.</td>
+            </tr>
+            <tr>
+                <td><strong>Marketing & Community Growth</strong></td>
+                <td>2,100,000</td>
+                <td>25%</td>
+                <td>Exchange listings, promotional campaigns, community rewards, airdrops, ambassador program, and ecosystem grants.</td>
+            </tr>
+            <tr>
+                <td><strong>Liquidity Provision</strong></td>
+                <td>1,260,000</td>
+                <td>15%</td>
+                <td>Initial liquidity on centralized and decentralized exchanges. Locked for minimum 12 months to ensure market stability.</td>
+            </tr>
+            <tr>
+                <td><strong>Operations & Business Development</strong></td>
+                <td>840,000</td>
+                <td>10%</td>
+                <td>Legal compliance, partnerships, operational expenses, server infrastructure, and business development initiatives.</td>
+            </tr>
+            <tr>
+                <td><strong>Legal & Compliance</strong></td>
+                <td>420,000</td>
+                <td>5%</td>
+                <td>Regulatory compliance, legal advisory, licensing, and jurisdictional assessments.</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="highlight">
+        <strong>🔒 Vesting & Transparency:</strong><br>
+        • All premine funds are held in multi-signature wallets (3-of-5 keys)<br>
+        • Quarterly transparency reports will be published on GitHub<br>
+        • Any deviation from allocation requires community governance vote<br>
+        • Team tokens are subject to 24-month vesting with 6-month cliff
+    </div>
 
     <!-- Block Reward by Era -->
     <h2>⛏️ Block Reward by Era</h2>
@@ -325,43 +406,18 @@
     <!-- Summary -->
     <h2>📋 Summary</h2>
     <div class="two-columns">
-        <div class="stat-card">
-            <h4>Total Supply</h4>
-            <p><strong>84,000,000 ZAL</strong></p>
-        </div>
-        <div class="stat-card">
-            <h4>Premine</h4>
-            <p><strong>8,400,000 ZAL (10%)</strong></p>
-        </div>
-        <div class="stat-card">
-            <h4>Masternode Collateral</h4>
-            <p><strong>8,000 ZAL</strong></p>
-        </div>
-        <div class="stat-card">
-            <h4>Masternode Activation</h4>
-            <p><strong>Block 8,000 (~14 days)</strong></p>
-        </div>
-        <div class="stat-card">
-            <h4>Reward Split</h4>
-            <p><strong>45% MN / 45% Miners / 10% Treasury</strong></p>
-        </div>
-        <div class="stat-card">
-            <h4>Initial MN Income</h4>
-            <p><strong>~12 ZAL/day</strong></p>
-        </div>
-        <div class="stat-card">
-            <h4>Mining Duration</h4>
-            <p><strong>~37 years</strong></p>
-        </div>
-        <div class="stat-card">
-            <h4>Max Masternodes</h4>
-            <p><strong>10,500</strong></p>
-        </div>
+        <div class="stat-card"><h4>Total Supply</h4><p><strong>84,000,000 ZAL</strong></p></div>
+        <div class="stat-card"><h4>Premine</h4><p><strong>8,400,000 ZAL (10%)</strong></p></div>
+        <div class="stat-card"><h4>Masternode Collateral</h4><p><strong>8,000 ZAL</strong></p></div>
+        <div class="stat-card"><h4>Masternode Activation</h4><p><strong>Block 8,000 (~14 days)</strong></p></div>
+        <div class="stat-card"><h4>Reward Split</h4><p><strong>45% MN / 45% Miners / 10% Treasury</strong></p></div>
+        <div class="stat-card"><h4>Initial MN Income</h4><p><strong>~12 ZAL/day</strong></p></div>
+        <div class="stat-card"><h4>Mining Duration</h4><p><strong>~37 years</strong></p></div>
+        <div class="stat-card"><h4>Max Masternodes</h4><p><strong>10,500</strong></p></div>
     </div>
 
-
     <div class="footer">
-        <strong style="color: var(--primary);">Bitzal Core</strong> — Fair Launch, Sustainable Tokenomics
+        <strong style="color: var(--primary);">Bitzal Core</strong> — Fair Launch, Sustainable Tokenomics, Transparent Development
     </div>
 
 </div>
