@@ -1,6 +1,6 @@
 ## The Basics
 
-- **  → [Bitzal Whitepaper](whitepaper.md)**  
+- [Bitzal Whitepaper](whitepaper.md)  
   White papers allow you to fully disclose the idea behind the project with a full description of the project.  
 
 - **Official Road Map**  
